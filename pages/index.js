@@ -21,11 +21,11 @@ export default function Home({ products }) {
             </Head>
 
             <main className={styles.main}>
-                <ul>
+                <ul className={styles.cards}>
                     {products.map((product) => {
                         const { current } = product.masterData;
                         return (
-                            <li key={product.id}>
+                            <li key={product.id} className={styles.card}>
                                 <p>{current.name.en}</p>
                                 {current.masterVariant.images.length ? (
                                     <Image
@@ -44,16 +44,6 @@ export default function Home({ products }) {
                                         width={150}
                                     />
                                 )}
-                                {current.masterVariant.prices.length ? (
-                                    <p>
-                                        $
-                                        {current.masterVariant.prices[0].value
-                                            .centAmount / 100}
-                                    </p>
-                                ) : (
-                                    <p>'n/a'</p>
-                                )}
-                                <p>{current.description.en}</p>
                             </li>
                         );
                     })}
