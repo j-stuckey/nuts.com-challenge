@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
+import Modal from '../components/Modal';
 import styles from '../styles/Home.module.css';
 import { getProductsData } from '../lib/products';
 import Image from 'next/image';
@@ -28,6 +29,7 @@ export default function Home({ products }) {
     const [page, setPage] = useState(0);
     const [loading, setLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [product, setProduct] = useState({});
 
     useEffect(() => {
         setProductList(products);
@@ -52,7 +54,7 @@ export default function Home({ products }) {
 
             <main className={styles.main}>
                 <p>Showing {productList.length} products</p>
-
+                <Modal isOpen={isOpen} product={product} handleClose={() => setIsOpen(!isOpen)}/>
                 <ul className={styles.cards}>
                     <InfiniteScroll
                         dataLength={productList.length}
@@ -77,6 +79,7 @@ export default function Home({ products }) {
                                     className={styles.card}
                                     onClick={() => {
                                         setIsOpen(!isOpen);
+                                        setProduct(product);
                                     }}
                                 >
                                     <p>{current.name.en}</p>
