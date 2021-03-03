@@ -1,19 +1,21 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import { getProductsData } from '../lib/products';
 import Image from 'next/image';
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
     const products = await getProductsData();
 
     return {
         props: {
-            products
+            products: products || []
         }
     };
 }
 
 export default function Home({ products }) {
+
     return (
         <div className={styles.container}>
             <Head>
