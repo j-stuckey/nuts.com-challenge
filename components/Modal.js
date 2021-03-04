@@ -58,9 +58,11 @@ export default function Modal({ isOpen, product, handleClose }) {
                             />
                         </div>
                     </div>
-                    <p className={styles.desc}>
+                    {product.masterData.current.description ? <p className={styles.desc}>
                         {product.masterData.current.description.en}
-                    </p>
+                    </p> : <p className={styles.desc}>
+                        N/a
+                    </p>}
                     {product.masterData.current.masterVariant.prices.length ? (
                         <p className={styles.price}>
                             $

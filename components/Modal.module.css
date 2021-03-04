@@ -33,7 +33,11 @@
 }
 
 .close {
-    align-self: flex-start;
+    /* align-self: flex-start; */
+    position: sticky;
+    top: 5px;
+    left: 5px;
+
 }
 
 .images {
@@ -46,7 +50,8 @@
 }
 
 .desc {
-    text-align: center;
+    /* text-align: center; */
+    padding: 25px;
 }
 
 .price {
