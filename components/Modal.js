@@ -20,7 +20,7 @@ export default function Modal({ isOpen, product, handleClose }) {
         const isOrganic = product.masterData.current.masterVariant.attributes.find(
             (el) => el.name === 'Organic'
         );
-        console.log(product)
+        
         return (
             <div className={styles.modal}>
                 <section className={styles.modalMain}>

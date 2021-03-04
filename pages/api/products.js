@@ -1,4 +1,4 @@
-import { getProductsData } from '../../lib/products';
+import { getProductsData } from 'lib/products';
 
 const handler = async (req, res) => {
     const { page } = req.query;

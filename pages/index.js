@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
-import Modal from '../components/Modal';
-import styles from '../styles/Home.module.css';
+import Modal from 'components/Modal';
+import styles from 'styles/Home.module.css';
 import { getProductsData } from '../lib/products';
 import Image from 'next/image';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -32,8 +32,10 @@ export default function Home({ products }) {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        setProductList(products);
-        window.scrollTo(100, 100);
+        if (!productList.length) {
+            setProductList(products);
+        }
+
     }, [page]);
 
     async function fetchData() {
