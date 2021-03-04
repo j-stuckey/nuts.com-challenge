@@ -27,15 +27,15 @@ export async function getServerSideProps(context) {
 export default function Home({ products }) {
     const [productList, setProductList] = useState([]);
     const [page, setPage] = useState(0);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
     const [product, setProduct] = useState({});
 
     useEffect(() => {
         if (!productList.length) {
             setProductList(products);
+            window.scrollTo({ top: 100, left: 100, behavior: 'smooth' });
         }
-
     }, [page]);
 
     async function fetchData() {
@@ -43,6 +43,9 @@ export default function Home({ products }) {
         const response = await fetch(`/api/products?page=${page + 1}`);
         const data = await response.json();
 
+        if (data.length < 10) {
+            setLoading(false);
+        }
         const newList = productList.concat(data);
         setProductList(newList);
     }
@@ -64,7 +67,7 @@ export default function Home({ products }) {
                     <InfiniteScroll
                         dataLength={productList.length}
                         next={fetchData}
-                        hasMore={productList.length < 50}
+                        hasMore={loading}
                         scrollThreshold="20px"
                         className={styles.scroller}
                         loader={
@@ -110,6 +113,17 @@ export default function Home({ products }) {
                         })}
                     </InfiniteScroll>
                 </ul>
+                <button
+                    onClick={() =>
+                        window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: 'smooth'
+                        })
+                    }
+                >
+                    Back to top
+                </button>
             </main>
 
             <footer className={styles.footer}>
