@@ -33,7 +33,7 @@ export default function Home({ products }) {
 
     useEffect(() => {
         setProductList(products);
-        window.scrollTo(0, 0);
+        window.scrollTo(100, 100);
     }, [page]);
 
     async function fetchData() {
@@ -42,7 +42,6 @@ export default function Home({ products }) {
         const data = await response.json();
 
         const newList = productList.concat(data);
-
         setProductList(newList);
     }
 
@@ -64,7 +63,7 @@ export default function Home({ products }) {
                         dataLength={productList.length}
                         next={fetchData}
                         hasMore={productList.length < 50}
-                        scrollThreshold="1px"
+                        scrollThreshold="20px"
                         className={styles.scroller}
                         loader={
                             <h4 style={{ textAlign: 'center' }}>Loading...</h4>
