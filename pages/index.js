@@ -54,7 +54,11 @@ export default function Home({ products }) {
 
             <main className={styles.main}>
                 <p>Showing {productList.length} products</p>
-                <Modal isOpen={isOpen} product={product} handleClose={() => setIsOpen(!isOpen)}/>
+                <Modal
+                    isOpen={isOpen}
+                    product={product}
+                    handleClose={() => setIsOpen(!isOpen)}
+                />
                 <ul className={styles.cards}>
                     <InfiniteScroll
                         dataLength={productList.length}

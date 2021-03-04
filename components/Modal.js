@@ -1,16 +1,25 @@
+import { useEffect } from 'react';
 import Image from 'next/image';
 import styles from './Modal.module.css';
 
 export default function Modal({ isOpen, product, handleClose }) {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     const showHideClassName = isOpen
         ? `${styles.modal} ${styles.block}`
         : `${styles.modal} ${styles.none}`;
-    document.body.style.overflow = 'unset';
+
     if (isOpen && product) {
         const isOrganic = product.masterData.current.masterVariant.attributes.find(
             (el) => el.name === 'Organic'
         );
-        document.body.style.overflow = 'hidden';
 
         return (
             <div className={styles.modal}>
@@ -53,5 +62,6 @@ export default function Modal({ isOpen, product, handleClose }) {
             </div>
         );
     }
+
     return null;
 }
