@@ -58,6 +58,9 @@
     align-self: flex-end;
 }
 
+.badge {
+    align-self: flex-end;
+}
 .block {
     display: block;
 }

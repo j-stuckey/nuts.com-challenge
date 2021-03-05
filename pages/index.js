@@ -46,7 +46,7 @@ export default function Home({ products }) {
     if (data.length < 10) {
       setLoading(false);
     }
-    const newList = productList.concat(data);
+    const newList = [...productList, ...data];
     setProductList(newList);
   }
 
