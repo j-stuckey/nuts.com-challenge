@@ -62,7 +62,7 @@ export default function Modal({ isOpen, product, handleClose }) {
                                 {product.masterData.current.description.en}
                             </p>
                         ) : (
-                            <p className={styles.desc}>N/a</p>
+                            <p className={styles.desc}>Sample product description</p>
                         )}
                         {product.masterData.current.masterVariant.prices
                             .length ? (
@@ -72,7 +72,7 @@ export default function Modal({ isOpen, product, handleClose }) {
                                     .prices[0].value.centAmount / 100}
                             </p>
                         ) : (
-                            <p>Price unavailable</p>
+                            <p>Price n/a</p>
                         )}
                     </div>
                 </section>
