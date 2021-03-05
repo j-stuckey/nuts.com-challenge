@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
-import Modal from 'components/Modal';
-import Card from 'components/Card';
+import { Modal, Card } from 'components';
 import styles from 'styles/Home.module.css';
 import { getProductsData } from '../lib/products';
 import Image from 'next/image';
