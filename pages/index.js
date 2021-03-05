@@ -108,6 +108,15 @@ export default function Home({ products }) {
                                             width={150}
                                         />
                                     )}
+                                    {current.masterVariant.prices.length ? (
+                                        <p className={styles.price}>
+                                            $
+                                            {current.masterVariant.prices[0]
+                                                .value.centAmount / 100}
+                                        </p>
+                                    ) : (
+                                        <p>N/a</p>
+                                    )}
                                 </li>
                             );
                         })}
