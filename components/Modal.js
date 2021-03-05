@@ -57,21 +57,24 @@ export default function Modal({ isOpen, product, handleClose }) {
                                 layout="intrinsic"
                             />
                         </div>
+                        {product.masterData.current.description ? (
+                            <p className={styles.desc}>
+                                {product.masterData.current.description.en}
+                            </p>
+                        ) : (
+                            <p className={styles.desc}>N/a</p>
+                        )}
+                        {product.masterData.current.masterVariant.prices
+                            .length ? (
+                            <p className={styles.price}>
+                                $
+                                {product.masterData.current.masterVariant
+                                    .prices[0].value.centAmount / 100}
+                            </p>
+                        ) : (
+                            <p>Price unavailable</p>
+                        )}
                     </div>
-                    {product.masterData.current.description ? <p className={styles.desc}>
-                        {product.masterData.current.description.en}
-                    </p> : <p className={styles.desc}>
-                        N/a
-                    </p>}
-                    {product.masterData.current.masterVariant.prices.length ? (
-                        <p className={styles.price}>
-                            $
-                            {product.masterData.current.masterVariant.prices[0]
-                                .value.centAmount / 100}
-                        </p>
-                    ) : (
-                        <p>Price unavailable</p>
-                    )}
                 </section>
             </div>
         );
